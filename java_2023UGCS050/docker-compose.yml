@@ -1,0 +1,32 @@
+version: "6.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: cli.dockerfile
+    container_name: cli
+    depends_on:
+      database:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+  database:
+    image: mysql:8.0
+    container_name: cli-database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: clidb
+    ports:
+      - 3306:3306
+    volumes:
+      - cli-database:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  cli-database:

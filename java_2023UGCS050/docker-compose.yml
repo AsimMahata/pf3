@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: clidb
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - cli-database:/var/lib/mysql
     healthcheck:

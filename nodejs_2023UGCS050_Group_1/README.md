@@ -6,11 +6,14 @@
 * Asim Kumar Mahata - 2023UGCS050
 * Aditya Raj - 2023UGCS051
 
-## To Run Webapp 
+## To Run Webapp First Time
 ```bash
 docker compose up --build
 ```
-
+## To Run Webapp without building
+```bash
+docker compose up
+```
 ## To Stop Webapp 
 ```bash
 docker compose down

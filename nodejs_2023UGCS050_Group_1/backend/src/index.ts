@@ -1,16 +1,17 @@
-import { app } from './server.js';
-import dotenv from 'dotenv';
-import { initDB } from './config/database.js';
-
+import dotenv from "dotenv";
 dotenv.config();
+import { app } from "./server.js";
+import { initDB } from "./config/database.js";
 
 const PORT = process.env.PORT || 3000;
 
-initDB().then(() => {
+initDB()
+  .then(() => {
     app.listen(PORT, () => {
-        console.log(`Backend-SQL running on port ${PORT} (MySQL)`);
+      console.log(`Backend-SQL running on port ${PORT} (MySQL)`);
     });
-}).catch((error) => {
-    console.error('Failed to connect to MySQL database:', error);
+  })
+  .catch((error) => {
+    console.error("Failed to connect to MySQL database:", error);
     process.exit(1);
-});
+  });
